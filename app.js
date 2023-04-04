@@ -127,6 +127,7 @@ const gameController = (()=>{
     }
 
     const _checkWinner = ()=>{
+        let flag=false;
         winningCombos.forEach(element => {
             let array=element.map(i=>gameBoard.getGameArray()[i])
             if(_allEqualArray(array) & array[0]!=""){
@@ -135,13 +136,14 @@ const gameController = (()=>{
                 const result  =  document.getElementsByClassName("player");
                 result[0].innerHTML=`The winner is ${symbol}!!`
                 gameActive=false;
-                return true;
+                flag=true;
 
             }else{
-                return false;
-
+                console.log("Entrou")
             }
         });
+
+        return flag;
         
     };
 
@@ -170,7 +172,11 @@ const gameController = (()=>{
         }
 
         if(count==9){
-            player[0].innerHTML="It's a tie! No one wins!";
+
+            let flag=_checkWinner();
+            if(!flag){
+                player[0].innerHTML="No one wins! Its a tie!";
+            }
             count=0;
         }
     };
