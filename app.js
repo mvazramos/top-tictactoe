@@ -134,8 +134,6 @@ const gameController = (()=>{
                 let symbol = array[0];
                 const result  =  document.getElementsByClassName("player");
                 result[0].innerHTML=`The winner is ${symbol}!!`
-                console.log(`The winner is ${symbol}`);
-
                 gameActive=false;
                 return true;
 
@@ -172,7 +170,6 @@ const gameController = (()=>{
         }
 
         if(count==9){
-            console.log("Over");
             player[0].innerHTML="It's a tie! No one wins!";
             count=0;
         }
